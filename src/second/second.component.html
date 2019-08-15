@@ -1,3 +1,31 @@
-<h1>
-  Good morning from second!!!
-</h1>
+<div class="container">
+  <h1>
+    Good morning!!
+  </h1>
+  <h1>
+    {{ name }}
+  </h1>
+  <h2>Age is {{ age }}</h2>
+  <h3>language used is {{ language }}</h3>
+  <hr />
+  <h1>
+    {{ giveText("Ram") }}
+  </h1>
+  <button (click)="respond()">Click</button>
+  <button (click)="inc()">+</button>
+  <button (click)="dec()">-</button>
+  <hr />
+  <ul>
+    <li>IND</li>
+    <li>CHI</li>
+    <li>AUS</li>
+    <li>ENG</li>
+  </ul>
+  <app-first-component></app-first-component>
+  <app-first-component></app-first-component>
+  <app-first-component></app-first-component>
+  <app-first-component></app-first-component>
+  <app-first-component></app-first-component>
+  <app-first-component></app-first-component>
+  <app-third></app-third>
+</div>

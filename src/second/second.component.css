@@ -1,0 +1,14 @@
+.container {
+  height: 100vh;
+  min-width: 100vw;
+  overflow: scroll;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(245, 172, 89);
+}
+
+app-first-component {
+  z-index: 10;
+  position: relative;
+}
