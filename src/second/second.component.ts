@@ -6,28 +6,37 @@ import { Component } from "@angular/core";
   styleUrls: ["./second.component.css"]
 })
 export class SecondComponent {
-  name = "Angular";
-  age = 10;
-  language = "ENG";
+  name: string = "Angular";
+  age: number = 10;
+  language: string = "ENG";
 
-  giveText(x) {
+  countries: string[] = ["IND", "RUS", "CHI", "JAP"];
+  ranks: number[] = [1, 2, 3, 4, 5];
+  person = {
+    name: "RAM",
+    age: 10
+  };
+
+  giveText(x): string {
     let wish = "Good morning";
     const time = "09:00";
     wish = `Good afternoon ${this.name}`;
-
     return `Hi ${wish}  the time is ${time} O' clock by ${x}`;
     // return "Hi " + wish + " the time is " + time + " O clock by " + x;
   }
 
-  respond() {
+  respond(): void {
     alert(`Hi ${this.name}`);
   }
 
-  inc() {
+  inc(): void {
     this.age = this.age + 1;
   }
 
-  dec() {
+  dec(): never {
+    // ..
+    // ..
+    throw new Error("Custom error message");
     this.age = this.age - 1;
   }
 }

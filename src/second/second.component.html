@@ -16,11 +16,23 @@
   <button (click)="dec()">-</button>
   <hr />
   <ul>
-    <li>IND</li>
-    <li>CHI</li>
-    <li>AUS</li>
-    <li>ENG</li>
+    <li
+      [ngStyle]="{ color: e ? 'red' : 'blue' }"
+      *ngFor="
+        let country of countries;
+        let i = index;
+        let e = even;
+        let o = odd;
+        let l = last;
+        let f = first
+      "
+    >
+      {{ i + 1 }}-{{ country }}--{{ e }}---{{ o }}*{{ l }}**{{ f }}
+    </li>
   </ul>
+  <h1>
+    {{ person | json }}
+  </h1>
   <app-first-component></app-first-component>
   <app-first-component></app-first-component>
   <app-first-component></app-first-component>
