@@ -1,42 +1,37 @@
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+
+import { Sections } from "./../app/sections.enum";
 
 @Component({
   selector: "app-second-component",
   templateUrl: "./second.component.html",
-  styleUrls: ["./second.component.css"]
+  styleUrls: ["./second.component.css"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SecondComponent {
-  name: string = "Angular";
-  age: number = 10;
-  language: string = "ENG";
+  show: boolean = true;
+  sectionsEnum;
+  currentSection: string;
 
-  countries: string[] = ["IND", "RUS", "CHI", "JAP"];
-  ranks: number[] = [1, 2, 3, 4, 5];
-  person = {
-    name: "RAM",
-    age: 10
-  };
-
-  giveText(x): string {
-    let wish = "Good morning";
-    const time = "09:00";
-    wish = `Good afternoon ${this.name}`;
-    return `Hi ${wish}  the time is ${time} O' clock by ${x}`;
-    // return "Hi " + wish + " the time is " + time + " O clock by " + x;
+  books: string[] = [];
+  constructor() {
+    console.log(Sections);
+    this.sectionsEnum = Sections;
+  }
+  toggle(): void {
+    this.show = !this.show;
   }
 
-  respond(): void {
-    alert(`Hi ${this.name}`);
+  changeSection(section: string): void {
+    this.currentSection = section;
   }
 
-  inc(): void {
-    this.age = this.age + 1;
+  addBooks() {
+    const book = `Book ${this.books.length}`;
+    this.books.push(book);
   }
 
-  dec(): never {
-    // ..
-    // ..
-    throw new Error("Custom error message");
-    this.age = this.age - 1;
+  removeBook() {
+    this.books.pop();
   }
 }

@@ -6,9 +6,21 @@
   top: 0;
   left: 0;
   background-color: rgb(245, 172, 89);
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 app-first-component {
   z-index: 10;
   position: relative;
+}
+
+ul.tags {
+  display: flex;
+}
+
+ul.tags li {
+  list-style: none;
+  margin: 10px;
+  padding: 10px;
 }

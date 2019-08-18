@@ -1,43 +1,143 @@
 <div class="container">
-  <h1>
-    Good morning!!
-  </h1>
-  <h1>
-    {{ name }}
-  </h1>
-  <h2>Age is {{ age }}</h2>
-  <h3>language used is {{ language }}</h3>
+  <button (click)="toggle()">Show/hide</button>
+  <p *ngIf="show">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi debitis,
+    architecto et molestias hic recusandae eligendi fuga quaerat illo
+    reprehenderit id adipisci tenetur doloremque est, vel officiis laudantium
+    sint. Dolores!
+  </p>
+  <h1>Good morning</h1>
   <hr />
-  <h1>
-    {{ giveText("Ram") }}
-  </h1>
-  <button (click)="respond()">Click</button>
-  <button (click)="inc()">+</button>
-  <button (click)="dec()">-</button>
-  <hr />
-  <ul>
-    <li
-      [ngStyle]="{ color: e ? 'red' : 'blue' }"
-      *ngFor="
-        let country of countries;
-        let i = index;
-        let e = even;
-        let o = odd;
-        let l = last;
-        let f = first
-      "
-    >
-      {{ i + 1 }}-{{ country }}--{{ e }}---{{ o }}*{{ l }}**{{ f }}
-    </li>
+  <ul class="tags">
+    <li (click)="changeSection(sectionsEnum.Math)">Math</li>
+    <li (click)="changeSection(sectionsEnum.Tech)">Tech</li>
+    <li (click)="changeSection(sectionsEnum.AI)">AI</li>
+    <li (click)="changeSection(sectionsEnum.Sports)">Sports</li>
+    <li (click)="changeSection(sectionsEnum.All)">All</li>
   </ul>
-  <h1>
-    {{ person | json }}
-  </h1>
-  <app-first-component></app-first-component>
-  <app-first-component></app-first-component>
-  <app-first-component></app-first-component>
-  <app-first-component></app-first-component>
-  <app-first-component></app-first-component>
-  <app-first-component></app-first-component>
-  <app-third></app-third>
+
+  <div [ngSwitch]="currentSection">
+    <section *ngSwitchCase="sectionsEnum.Math">
+      <h1>
+        Math
+      </h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sequi
+        tempora ab architecto est similique officia nulla sunt voluptates nobis
+        maxime rem voluptatum odio enim, facilis dicta magnam asperiores cum.
+      </p>
+    </section>
+    <section *ngSwitchCase="sectionsEnum.Tech">
+      <h1>
+        Tech
+      </h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sequi
+        tempora ab architecto est similique officia nulla sunt voluptates nobis
+        maxime rem voluptatum odio enim, facilis dicta magnam asperiores cum.
+      </p>
+    </section>
+    <section *ngSwitchCase="sectionsEnum.AI">
+      <h1>
+        AI
+      </h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sequi
+        tempora ab architecto est similique officia nulla sunt voluptates nobis
+        maxime rem voluptatum odio enim, facilis dicta magnam asperiores cum.
+      </p>
+    </section>
+    <section *ngSwitchCase="sectionsEnum.Sports">
+      <h1>
+        Sports
+      </h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sequi
+        tempora ab architecto est similique officia nulla sunt voluptates nobis
+        maxime rem voluptatum odio enim, facilis dicta magnam asperiores cum.
+      </p>
+    </section>
+    <section *ngSwitchDefault>
+      <h1>
+        All
+      </h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sequi
+        tempora ab architecto est similique officia nulla sunt voluptates nobis
+        maxime rem voluptatum odio enim, facilis dicta magnam asperiores cum.
+      </p>
+    </section>
+  </div>
+  <!-- <section *ngIf="currentSection === sectionsEnum.Math">
+    <h1>
+      Math
+    </h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sequi
+      tempora ab architecto est similique officia nulla sunt voluptates nobis
+      maxime rem voluptatum odio enim, facilis dicta magnam asperiores cum.
+    </p>
+  </section>
+  <section *ngIf="currentSection === sectionsEnum.Tech">
+    <h1>
+      Tech
+    </h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sequi
+      tempora ab architecto est similique officia nulla sunt voluptates nobis
+      maxime rem voluptatum odio enim, facilis dicta magnam asperiores cum.
+    </p>
+  </section>
+  <section *ngIf="currentSection === sectionsEnum.AI">
+    <h1>
+      AI
+    </h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sequi
+      tempora ab architecto est similique officia nulla sunt voluptates nobis
+      maxime rem voluptatum odio enim, facilis dicta magnam asperiores cum.
+    </p>
+  </section>
+  <section *ngIf="currentSection === sectionsEnum.Sports">
+    <h1>
+      Sports
+    </h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sequi
+      tempora ab architecto est similique officia nulla sunt voluptates nobis
+      maxime rem voluptatum odio enim, facilis dicta magnam asperiores cum.
+    </p>
+  </section>
+  <section
+    *ngIf="currentSection === sectionsEnum.All || currentSection === undefined"
+  >
+    <h1>
+      All
+    </h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sequi
+      tempora ab architecto est similique officia nulla sunt voluptates nobis
+      maxime rem voluptatum odio enim, facilis dicta magnam asperiores cum.
+    </p>
+  </section> -->
+
+  <button (click)="addBooks()">Add Books</button>
+  <button (click)="removeBook()">Remove Books</button>
+
+  <div *ngIf="books.length > 0; then trueBlock; else falseBlock"></div>
+
+  <ng-template #trueBlock>
+    <ul>
+      <li *ngFor="let book of books">
+        <h4>
+          {{ book }}
+        </h4>
+      </li>
+    </ul>
+  </ng-template>
+  <ng-template #falseBlock>
+    <div>
+      <p>Sorry no books available :(</p>
+    </div>
+  </ng-template>
 </div>
