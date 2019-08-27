@@ -3,18 +3,12 @@ import { SecondModule } from "./second.module";
 import { ThirdModule } from "./third.module";
 
 import { BrowserModule } from "@angular/platform-browser";
-import { FirstComponent } from "./first/first.component";
 import { SecondComponent } from "./second/second.component";
-import { ThirdComponent } from "./app/third/third.component";
-import { FourthComponent } from "./app/fourth/fourth.component";
+import { CountryComponent } from "./app/country/country.component";
+import { ContinentComponent } from "./app/continent/continent.component";
 
 @NgModule({
-  declarations: [
-    FirstComponent,
-    SecondComponent,
-    ThirdComponent,
-    FourthComponent
-  ],
+  declarations: [SecondComponent, CountryComponent, ContinentComponent],
   imports: [SecondModule, ThirdModule, BrowserModule],
   bootstrap: [SecondComponent]
 })

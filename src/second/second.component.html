@@ -1,43 +1,54 @@
 <div class="container">
-  <h1>
-    Good morning!!
-  </h1>
-  <h1>
-    {{ name }}
-  </h1>
-  <h2>Age is {{ age }}</h2>
-  <h3>language used is {{ language }}</h3>
-  <hr />
-  <h1>
-    {{ giveText("Ram") }}
-  </h1>
-  <button (click)="respond()">Click</button>
-  <button (click)="inc()">+</button>
-  <button (click)="dec()">-</button>
-  <hr />
-  <ul>
-    <li
-      [ngStyle]="{ color: e ? 'red' : 'blue' }"
-      *ngFor="
-        let country of countries;
-        let i = index;
-        let e = even;
-        let o = odd;
-        let l = last;
-        let f = first
-      "
-    >
-      {{ i + 1 }}-{{ country }}--{{ e }}---{{ o }}*{{ l }}**{{ f }}
-    </li>
-  </ul>
-  <h1>
-    {{ person | json }}
-  </h1>
-  <app-first-component></app-first-component>
-  <app-first-component></app-first-component>
-  <app-first-component></app-first-component>
-  <app-first-component></app-first-component>
-  <app-first-component></app-first-component>
-  <app-first-component></app-first-component>
-  <app-third></app-third>
+  <div>
+    <h1>
+      Countries
+    </h1>
+    <app-country>
+      <h1 class="country">
+        INDIA
+      </h1>
+      <p class="capital">
+        Delhi
+      </p>
+    </app-country>
+    <app-country>
+      <p class="country">
+        ICELAND
+      </p>
+      <h1 class="capital">
+        Reykjavík
+      </h1>
+    </app-country>
+    <app-country>
+      <h2 class="country">
+        Bhutan
+      </h2>
+      <i class="capital">
+        Thimphu
+      </i>
+    </app-country>
+  </div>
+  <div>
+    <h1>
+      You have selected....
+    </h1>
+    <h1>{{ selectedContinent }}**</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio nobis
+      sapiente numquam iusto est fugiat nihil aspernatur nulla sit ad! Est
+      recusandae tenetur sint, dolorem eaque rerum debitis dignissimos quos.
+    </p>
+  </div>
+  <div>
+    <h1>
+      Continet
+    </h1>
+    <!-- <app-continent [continent]="'AUSTRALIA'"></app-continent>
+    <app-continent [continent]="listOfContinents[0]"></app-continent> -->
+    <app-continent
+      (z)="catchContinent($event)"
+      [continent]="continent"
+      *ngFor="let continent of listOfContinents"
+    ></app-continent>
+  </div>
 </div>

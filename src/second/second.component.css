@@ -5,10 +5,9 @@
   position: absolute;
   top: 0;
   left: 0;
+  padding: 20px;
+  box-sizing: border-box;
   background-color: rgb(245, 172, 89);
-}
-
-app-first-component {
-  z-index: 10;
-  position: relative;
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
 }
