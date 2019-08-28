@@ -4,19 +4,15 @@ import { ThirdModule } from "./third.module";
 
 import { BrowserModule } from "@angular/platform-browser";
 import { FirstComponent } from "./first/first.component";
-import { SecondComponent } from "./second/second.component";
-import { ThirdComponent } from "./app/third/third.component";
-import { FourthComponent } from "./app/fourth/fourth.component";
+import { LeftComponent } from "./app/left/left.component";
+import { RightComponent } from "./app/right/right.component";
+import { BookService } from "./app/book.service";
 
 @NgModule({
-  declarations: [
-    FirstComponent,
-    SecondComponent,
-    ThirdComponent,
-    FourthComponent
-  ],
+  declarations: [FirstComponent, LeftComponent, RightComponent],
   imports: [SecondModule, ThirdModule, BrowserModule],
-  bootstrap: [SecondComponent]
+  providers: [BookService],
+  bootstrap: [FirstComponent]
 })
 export class FirstModule {
   constructor() {
