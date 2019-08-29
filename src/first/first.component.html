@@ -1,3 +1,33 @@
 <h1>
-  Good Evening!!!
+  Forms here...
+</h1>
+
+<!-- <input type="text" (change)="bindLanguage($event)" /> -->
+<!-- <input type="text" (keydown)="bindLanguage($event)" /> -->
+<!-- <input type="text" (keyup)="bindLanguage($event)" /> -->
+<!-- <input type="text" #myinput (keyup)="bindLanguage(myinput)" /> -->
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <input type="text" [(ngModel)]="language.name" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" [(ngModel)]="language.year" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" [(ngModel)]="language.creator" />
+      </td>
+    </tr>
+    <td>
+      <button type="text" (click)="logData()">Click</button>
+    </td>
+  </tbody>
+</table>
+<h1>
+  {{ language }}
 </h1>
