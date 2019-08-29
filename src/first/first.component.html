@@ -1,33 +1,55 @@
 <h1>
-  Forms here...
+  Reactive ..
 </h1>
-
-<!-- <input type="text" (change)="bindLanguage($event)" /> -->
-<!-- <input type="text" (keydown)="bindLanguage($event)" /> -->
-<!-- <input type="text" (keyup)="bindLanguage($event)" /> -->
-<!-- <input type="text" #myinput (keyup)="bindLanguage(myinput)" /> -->
-<table>
+<!-- <table>
   <tbody>
     <tr>
       <td>
-        <input type="text" [(ngModel)]="language.name" />
+        <input type="text" [formControl]="language" />
       </td>
     </tr>
     <tr>
       <td>
-        <input type="text" [(ngModel)]="language.year" />
+        <input type="text" [formControl]="year" />
       </td>
     </tr>
     <tr>
       <td>
-        <input type="text" [(ngModel)]="language.creator" />
+        <input type="text" [formControl]="creator" />
       </td>
     </tr>
-    <td>
-      <button type="text" (click)="logData()">Click</button>
-    </td>
+    <tr>
+      <td>
+        <button (click)="print()">LogData</button>
+      </td>
+    </tr>
+  </tbody>
+</table> -->
+<table [formGroup]="languageForm">
+  <tbody>
+    <tr>
+      <td>
+        <input type="text" formControlName="name" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" formControlName="year" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" formControlName="creator" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button (click)="print()">LogData</button>
+      </td>
+    </tr>
   </tbody>
 </table>
+
 <h1>
-  {{ language }}
+  {{ languageForm.value | json }}
 </h1>

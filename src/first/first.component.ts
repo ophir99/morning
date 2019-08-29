@@ -1,30 +1,22 @@
 import { Component } from "@angular/core";
-
+import { FormControl, FormGroup } from "@angular/forms";
 @Component({
   selector: "app-first-component",
   templateUrl: "./first.component.html"
 })
 export class FirstComponent {
-  // language: string = "";
-  // year: string;
-  // creator: string;
-  // bindLanguage(event) {
-  //   console.log(event);
-  //   this.language = event.target.value;
-  // }
+  // language = new FormControl();
+  // year = new FormControl();
+  // creator = new FormControl();
 
-  // bindLanguage(dom) {
-  //   console.log(dom);
-  //   this.language = dom.value;
-  // }
+  languageForm: FormGroup = new FormGroup({
+    name: new FormControl(),
+    year: new FormControl(),
+    creator: new FormControl()
+  });
+  constructor() {}
 
-  language = {
-    name: "",
-    year: "",
-    creator: ""
-  };
-
-  logData() {
+  print() {
     console.log(this);
   }
 }

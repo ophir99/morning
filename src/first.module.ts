@@ -4,11 +4,11 @@ import { ThirdModule } from "./third.module";
 
 import { BrowserModule } from "@angular/platform-browser";
 import { FirstComponent } from "./first/first.component";
-import { FormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [FirstComponent],
-  imports: [SecondModule, ThirdModule, BrowserModule, FormsModule],
+  imports: [SecondModule, ThirdModule, BrowserModule, ReactiveFormsModule],
   bootstrap: [FirstComponent]
 })
 export class FirstModule {
