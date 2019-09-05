@@ -29,20 +29,56 @@
   <tbody>
     <tr>
       <td>
-        <input type="text" formControlName="name" />
+        Name
+      </td>
+      <td>
+        <input type="text" placeholder="name here..." formControlName="name" />
       </td>
     </tr>
     <tr>
+      <td>
+        Year
+      </td>
       <td>
         <input type="text" formControlName="year" />
       </td>
     </tr>
+    <ng-container formGroupName="creator">
+      <tr>
+        <td>
+          First name
+        </td>
+        <td>
+          <input type="text" formControlName="firstName" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          last name
+        </td>
+        <td>
+          <input type="text" formControlName="lastName" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Age
+        </td>
+        <td>
+          <input type="text" formControlName="age" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Country
+        </td>
+        <td>
+          <input type="text" formControlName="country" />
+        </td>
+      </tr>
+    </ng-container>
     <tr>
-      <td>
-        <input type="text" formControlName="creator" />
-      </td>
-    </tr>
-    <tr>
+      <td></td>
       <td>
         <button (click)="print()">LogData</button>
       </td>
@@ -52,4 +88,64 @@
 
 <h1>
   {{ languageForm.value | json }}
+</h1>
+<hr />
+<table [formGroup]="studentForm">
+  <tr>
+    <td>
+      Name
+    </td>
+    <td>
+      <input type="text" formControlName="name" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Age
+    </td>
+    <td>
+      <input type="text" formControlName="age" />
+    </td>
+  </tr>
+  <ng-container formGroupName="address">
+    <tr>
+      <td>
+        Country
+      </td>
+      <td>
+        <input type="text" formControlName="country" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        State
+      </td>
+      <td>
+        <input type="text" formControlName="state" />
+      </td>
+    </tr>
+  </ng-container>
+  <tr>
+    <td>
+      Add Skills
+    </td>
+    <td>
+      <button (click)="addSkillFC()">+</button>
+    </td>
+  </tr>
+  <ng-container formArrayName="skills">
+    <tr *ngFor="let item of studentForm.get('skills').controls; let i = index">
+      <td>skill {{ i + 1 }}</td>
+      <td>
+        <input type="text" [formControlName]="i" />
+      </td>
+      <td>
+        <button (click)="removeSkillFC(i)">-</button>
+      </td>
+    </tr>
+  </ng-container>
+</table>
+
+<h1>
+  {{ studentForm.value | json }}
 </h1>
