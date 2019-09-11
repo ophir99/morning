@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { FormGroup, FormControl } from "@angular/forms";
+import { PostService } from "src/app/post.service";
 
 @Component({
   selector: "app-second-component",
@@ -6,37 +8,35 @@ import { Component } from "@angular/core";
   styleUrls: ["./second.component.css"]
 })
 export class SecondComponent {
-  name: string = "Angular";
-  age: number = 10;
-  language: string = "ENG";
-
-  countries: string[] = ["IND", "RUS", "CHI", "JAP"];
-  ranks: number[] = [1, 2, 3, 4, 5];
-  person = {
-    name: "RAM",
-    age: 10
-  };
-
-  giveText(x): string {
-    let wish = "Good morning";
-    const time = "09:00";
-    wish = `Good afternoon ${this.name}`;
-    return `Hi ${wish}  the time is ${time} O' clock by ${x}`;
-    // return "Hi " + wish + " the time is " + time + " O clock by " + x;
+  postForm: FormGroup;
+  msg = "";
+  constructor(private postService: PostService) {
+    this.postForm = new FormGroup({
+      title: new FormControl(),
+      description: new FormControl()
+    });
   }
 
-  respond(): void {
-    alert(`Hi ${this.name}`);
-  }
-
-  inc(): void {
-    this.age = this.age + 1;
-  }
-
-  dec(): never {
-    // ..
-    // ..
-    throw new Error("Custom error message");
-    this.age = this.age - 1;
+  create() {
+    this.msg = "saving data....";
+    console.log(this.postForm.value);
+    this.postService.create(this.postForm.value).subscribe(
+      res => {
+        console.log(res);
+        setTimeout(() => {
+          this.postForm.reset();
+          this.msg = "Data saved successfully";
+        }, 2000);
+      },
+      err => {
+        console.log(err);
+        this.msg = "Data failed to save. Try again :(";
+      },
+      () => {
+        setTimeout(() => {
+          this.msg = "";
+        }, 4000);
+      }
+    );
   }
 }
