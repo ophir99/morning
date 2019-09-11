@@ -144,6 +144,35 @@
       </td>
     </tr>
   </ng-container>
+  <tr>
+    <td></td>
+    <td>
+      <button (click)="addCourse()">Add Courses</button>
+    </td>
+  </tr>
+  <ng-container formArrayName="courses">
+    <tr *ngFor="let item of studentForm.get('courses').controls; let i = index">
+      <ng-container [formGroupName]="i">
+        <td>course {{ i + 1 }}</td>
+        <td>
+          <input type="text" placeholder="course name" formControlName="name" />
+        </td>
+        <td>
+          <input type="text" placeholder="course year" formControlName="year" />
+        </td>
+        <td>
+          <input
+            type="text"
+            placeholder="course marks"
+            formControlName="marks"
+          />
+        </td>
+        <td>
+          <button (click)="removeCourseFG(i)">X</button>
+        </td>
+      </ng-container>
+    </tr>
+  </ng-container>
 </table>
 
 <h1>

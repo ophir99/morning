@@ -31,7 +31,8 @@ export class FirstComponent {
         country: new FormControl(),
         state: new FormControl()
       }),
-      skills: new FormArray([])
+      skills: new FormArray([]),
+      courses: new FormArray([])
     });
   }
 
@@ -41,10 +42,24 @@ export class FirstComponent {
 
   addSkillFC() {
     const fc = new FormControl();
-    this.studentForm.get("skills").push(fc);
+    (this.studentForm.get("skills") as FormArray).push(fc);
   }
 
   removeSkillFC(ind: number) {
-    this.studentForm.get("skills").removeAt(ind);
+    (this.studentForm.get("skills") as FormArray).removeAt(ind);
+  }
+
+  addCourse() {
+    const fg = new FormGroup({
+      name: new FormControl(),
+      year: new FormControl(),
+      marks: new FormControl()
+    });
+
+    (this.studentForm.get("courses") as FormArray).push(fg);
+  }
+
+  removeCourseFG(i: number) {
+    (this.studentForm.get("courses") as FormArray).removeAt(i);
   }
 }
