@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { AppService } from "../app.service";
 
 @Component({
   selector: "app-contactus",
@@ -7,7 +8,10 @@ import { Router } from "@angular/router";
   styleUrls: ["./contactus.component.css"]
 })
 export class ContactusComponent implements OnInit {
-  constructor(private router: Router) {}
+  posts = [];
+  constructor(private router: Router, private appService: AppService) {
+    this.appService.getPosts().subscribe((res: any) => (this.posts = res));
+  }
 
   ngOnInit() {}
 

@@ -1,11 +1,17 @@
 <h1>
-  Contact us
+  Posts
 </h1>
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, est veniam.
-  Ab, id unde. Ad, cupiditate quasi eligendi excepturi voluptatem repellat ab
-  consequuntur, sequi praesentium nostrum blanditiis fugiat eveniet hic.
-</p>
-
+<ul>
+  <li *ngFor="let item of posts">
+    <h2>
+      {{ item.title }}
+    </h2>
+    <h3>
+      {{ item.description }}
+    </h3>
+    <!-- <a routerLink="/post/{{ item.title }}/{{ item._id }}">More Details</a> -->
+    <a [routerLink]="['/post', item.title, item._id]">More Details</a>
+  </li>
+</ul>
 <!-- <button routerLink="/aboutus">Go to About us</button> -->
 <button (click)="goto()">Go to About us</button>
