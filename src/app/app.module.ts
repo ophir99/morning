@@ -7,6 +7,8 @@ import { ContactusComponent } from "./contactus/contactus.component";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { PostdetailComponent } from "./postdetail/postdetail.component";
+import { PostsResolver } from "./contactus/posts.resolver";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,9 @@ import { PostdetailComponent } from "./postdetail/postdetail.component";
       },
       {
         path: "posts",
+        resolve: {
+          postsRES: PostsResolver
+        },
         component: ContactusComponent
       },
       {

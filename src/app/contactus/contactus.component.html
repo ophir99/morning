@@ -10,7 +10,15 @@
       {{ item.description }}
     </h3>
     <!-- <a routerLink="/post/{{ item.title }}/{{ item._id }}">More Details</a> -->
-    <a [routerLink]="['/post', item.title, item._id]">More Details</a>
+    <a
+      [routerLink]="['/post', item.title, item._id]"
+      [queryParams]="{
+        key1: 'Val 1',
+        key2: 'Val2',
+        toolName: item.title
+      }"
+      >More Details</a
+    >
   </li>
 </ul>
 <!-- <button routerLink="/aboutus">Go to About us</button> -->

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { AppService } from "../app.service";
 
 @Component({
@@ -9,8 +9,15 @@ import { AppService } from "../app.service";
 })
 export class ContactusComponent implements OnInit {
   posts = [];
-  constructor(private router: Router, private appService: AppService) {
-    this.appService.getPosts().subscribe((res: any) => (this.posts = res));
+  constructor(
+    private router: Router,
+    private appService: AppService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    // this.appService.getPosts().subscribe((res: any) => (this.posts = res));
+    this.activatedRoute.data.subscribe((data: any) => {
+      this.posts = data.postsRES;
+    });
   }
 
   ngOnInit() {}
